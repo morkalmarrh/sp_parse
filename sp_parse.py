@@ -35,6 +35,8 @@ out_df = pd.DataFrame()
 all_mails = mailbox.mbox("spbox.mbox")
 for message in all_mails:
     if "SmallPitch Team" in message['from']:
+        date = message['date']
+        #TODO: Exclude messages before the pitch event date.
         body = getbody(message)
         bookinfo = getbookinfo(body)
         bt_df = pd.DataFrame(data = bookinfo)
